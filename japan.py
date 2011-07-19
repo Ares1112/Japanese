@@ -51,7 +51,30 @@ class MyMenu(wx.Frame):
 		self.Bind(wx.EVT_BUTTON, self.OnCheck, id=2)
 	def rysuj(self):
 		if wybrano == 1:
-			if self.item == 3:
+			if self.item == 0:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/one1.gif'))
+					self.mg.RemoveGesture('R')
+			elif self.item == 1:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/two1.gif'))
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/two2.gif'))
+					self.mg.RemoveGesture('R')
+					self.krok = 1
+			elif self.item == 2:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/three1.gif'))
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/three2.gif'))
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/three3.gif'))
+					self.krok = 1
+					self.mg.RemoveGesture('R')
+			elif self.item == 3:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/four1.gif'))
 					self.krok = 2
@@ -62,12 +85,12 @@ class MyMenu(wx.Frame):
 					self.krok = 3
 					self.mg.RemoveGesture('RD')
 					self.mg.AddGesture('1',self.rysuj)
-					self.mg.AddGesture('D', self.rysuj)
+					self.mg.AddGesture('D1', self.rysuj)
 				elif self.krok == 3:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/four3.gif'))
 					self.krok = 4
 					self.mg.RemoveGesture('1')
-					self.mg.RemoveGesture('D')
+					self.mg.RemoveGesture('D1')
 					self.mg.AddGesture('DR', self.rysuj)
 				elif self.krok == 4:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/four4.gif'))
@@ -77,6 +100,212 @@ class MyMenu(wx.Frame):
 				elif self.krok == 5:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/four5.gif'))
 					self.mg.RemoveGesture('R')
+					self.krok = 1
+			elif self.item == 4:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/five1.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('1', self.rysuj)
+					self.mg.AddGesture('D1', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/five2.gif'))
+					self.mg.RemoveGesture('1')
+					self.mg.RemoveGesture('D1')
+					self.mg.AddGesture('RD', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/five3.gif'))
+					self.mg.RemoveGesture('RD')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 4
+				elif self.krok == 4:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/five4.gif'))
+					self.mg.RemoveGesture('R')
+					self.krok = 1
+			elif self.item == 5:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/six1.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/six2.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('1', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/six3.gif'))
+					self.mg.RemoveGesture('1')
+					self.mg.AddGesture('3', self.rysuj)
+					self.krok = 4
+				elif self.krok == 4:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/six4.gif'))
+					self.mg.RemoveGesture('3')
+					self.krok = 1
+			elif self.item == 6:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/seven1.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('DR', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/seven2.gif'))
+					self.mg.RemoveGesture('DR')
+					self.krok = 1
+			elif self.item == 7:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/eight1.gif'))
+					self.mg.RemoveGesture('1')
+					self.mg.AddGesture('3', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/eight2.gif'))
+					self.mg.RemoveGesture('3')
+					self.krok = 1
+			elif self.item == 8:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/nine1.gif'))
+					self.mg.RemoveGesture('D1')
+					self.mg.AddGesture('RDRU', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/nine2.gif'))
+					self.mg.RemoveGesture('RDRU')
+					self.krok = 1
+			elif self.item == 9:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/ten1.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/ten2.gif'))
+					self.mg.RemoveGesture('D')
+					self.krok = 1
+			elif self.item == 10:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred1.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('1', self.rysuj)
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred2.gif'))
+					self.mg.RemoveGesture('1')
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred3.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('RD', self.rysuj)
+					self.krok = 4
+				elif self.krok == 4:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred4.gif'))
+					self.mg.RemoveGesture('RD')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 5
+				elif self.krok == 5:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred5.gif'))
+					self.krok = 6
+				elif self.krok == 6:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred6.gif'))
+					self.mg.RemoveGesture('R')
+					self.krok = 1
+			elif self.item == 11:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/thousand1.gif'))
+					self.mg.RemoveGesture('L')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/thousand2.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/thousand3.gif'))
+					self.mg.RemoveGesture('D')
+					self.krok = 1
+			elif self.item == 12:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand1.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('R17', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand2.gif'))
+					self.mg.RemoveGesture('R17')
+					self.mg.AddGesture('1', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand3.gif'))
+					self.mg.RemoveGesture('1')
+					self.krok = 1
+			elif self.item == 13:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen1.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('RDL', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen2.gif'))
+					self.mg.RemoveGesture('RDL')
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen3.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 4
+				elif self.krok == 4:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen4.gif'))
+					self.mg.RemoveGesture('R')
+					self.krok = 1
+			elif self.item == 14:
+				if self.krok == 1:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time1.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('RD', self.rysuj)
+					self.krok = 2
+				elif self.krok == 2:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time2.gif'))
+					self.mg.RemoveGesture('RD')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 3
+				elif self.krok == 3:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time3.gif'))
+					self.krok = 4
+				elif self.krok == 4:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time4.gif'))
+					self.krok = 5
+				elif self.krok == 5:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time5.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('D', self.rysuj)
+					self.krok = 6
+				elif self.krok == 6:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time6.gif'))
+					self.mg.RemoveGesture('D')
+					self.mg.AddGesture('R', self.rysuj)
+					self.krok = 7
+				elif self.krok == 7:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time7.gif'))
+					self.krok = 8
+				elif self.krok == 8:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time8.gif'))
+					self.mg.RemoveGesture('R')
+					self.mg.AddGesture('D7', self.rysuj)
+					self.krok = 9
+				elif self.krok == 9:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time9.gif'))
+					self.mg.RemoveGesture('D7')
+					self.mg.AddGesture('3', self.rysuj)
+					self.krok = 10
+				elif self.krok == 10:
+					self.picture2.SetBitmap(wx.Bitmap('images/rys/time10.gif'))
+					self.mg.RemoveGesture('3')
 					self.krok = 1
 	def Wiad(self, event):
 		dlg = wx.MessageDialog(self, 'Program stworzony przez Arkadiusza (Aresa) Błasiaka', 'Autor', wx.OK|wx.ICON_INFORMATION)
@@ -272,7 +501,35 @@ class MyMenu(wx.Frame):
 			self.item = self.elementy.pop()
 			self.picture.SetBitmap(wx.Bitmap('images/' + self.images[self.item]))
 			if wybrano == 1:
-				if self.item == 3:
+				if self.item == 0:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 1:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 2:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 3:
+					self.mg.AddGesture('D',self.rysuj)
+				elif self.item == 4:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 5:
+					self.mg.AddGesture('D',self.rysuj)
+				elif self.item == 6:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 7:
+					self.mg.AddGesture('1',self.rysuj)
+				elif self.item == 8:
+					self.mg.AddGesture('D1',self.rysuj)
+				elif self.item == 9:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 10:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 11:
+					self.mg.AddGesture('L',self.rysuj)
+				elif self.item == 12:
+					self.mg.AddGesture('R',self.rysuj)
+				elif self.item == 13:
+					self.mg.AddGesture('D',self.rysuj)
+				elif self.item == 14:
 					self.mg.AddGesture('D',self.rysuj)
 		except IndexError:
 			dlg.ShowModal()
