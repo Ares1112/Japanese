@@ -4,7 +4,7 @@ import wx, random
 import wx.lib.gestures as gest
 class MyMenu(wx.Frame):
 	def __init__(self, parent, id, title):
-		wx.Frame.__init__(self, parent, id, title, wx.DefaultPosition, wx.Size(1024, 768),style=wx.MINIMIZE_BOX|wx.SYSTEM_MENU|wx.CAPTION|wx.CLOSE_BOX|wx.CLIP_CHILDREN)
+		wx.Frame.__init__(self, parent, id, title, wx.DefaultPosition, wx.Size(800, 600),style=wx.MINIMIZE_BOX|wx.SYSTEM_MENU|wx.CAPTION|wx.CLOSE_BOX|wx.CLIP_CHILDREN)
 		self.punkt=0
 		self.krok =1
 		if wybrano == 1:
@@ -13,12 +13,12 @@ class MyMenu(wx.Frame):
 		elif wybrano == 2:
 			self.elementy = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
 			self.images = ['day.gif', 'book.gif', 'person.gif', 'moon.gif', 'fire.gif', 'water.gif', 'tree.gif', 'gold.gif', 'soil.gif', 'weekday.gif', 'up.gif', 'down.gif', 'middle.gif', 'half.gif']
-		self.text1 = wx.StaticText(self, -1, 'czytanie kun yomi',(270, 500), style=wx.ALIGN_CENTRE)
-		self.text2 = wx.StaticText(self, -1, 'czytanie on yomi',(270, 540), style=wx.ALIGN_CENTRE)
-		self.text3 = wx.StaticText(self, -1, 'znaczenie',(270, 580), style=wx.ALIGN_CENTRE)
-		self.display1 = wx.TextCtrl(self, -1, '',(410,495),size=(200,30))
-		self.display2 = wx.TextCtrl(self, -1, '',(410,535),size=(200,30))
-		self.display3 = wx.TextCtrl(self, -1, '',(410,575),size=(200,30))
+		self.text1 = wx.StaticText(self, -1, 'czytanie kun yomi',(200, 435), style=wx.ALIGN_CENTRE)
+		self.text2 = wx.StaticText(self, -1, 'czytanie on yomi',(200, 475), style=wx.ALIGN_CENTRE)
+		self.text3 = wx.StaticText(self, -1, 'znaczenie',(200, 515), style=wx.ALIGN_CENTRE)
+		self.display1 = wx.TextCtrl(self, -1, '',(330,430),size=(200,30))
+		self.display2 = wx.TextCtrl(self, -1, '',(330,470),size=(200,30))
+		self.display3 = wx.TextCtrl(self, -1, '',(330,510),size=(200,30))
 		menubar = wx.MenuBar()
 		file = wx.Menu()
 		help = wx.Menu()
@@ -32,13 +32,12 @@ class MyMenu(wx.Frame):
 		self.SetMenuBar(menubar)
 		wx.Button(self, 1, 'Nastepne', (80, 220))
 		wx.Button(self, 2, 'Sprawdz',(80,260))
-		self.panel2 = wx.Panel(self, -1, (500,320), (100,100), style=wx.SUNKEN_BORDER)
+		self.panel2 = wx.Panel(self, -1, (400,250), (100,100), style=wx.SUNKEN_BORDER)
 		self.panel2.SetBackgroundColour('white')
 		self.picture2 = wx.StaticBitmap(self.panel2)
 		self.picture2.SetBitmap(wx.Bitmap('images/rys/biel.gif'))
 		self.mg = gest.MouseGestures(self.picture2, True, wx.MOUSE_BTN_LEFT)
-		self.mg.SetGesturePen(wx.Colour(0, 0, 0), 4)
-		self.panel = wx.Panel(self, -1, (400, 320), (100, 100),  style=wx.SUNKEN_BORDER)
+		self.panel = wx.Panel(self, -1, (300, 250), (100, 100),  style=wx.SUNKEN_BORDER)
 		self.picture = wx.StaticBitmap(self.panel)
 		self.panel.SetBackgroundColour('white')
 		self.sizer=wx.BoxSizer(wx.VERTICAL)
@@ -50,6 +49,7 @@ class MyMenu(wx.Frame):
 		self.Bind(wx.EVT_BUTTON, self.OnNext, id=1)
 		self.Bind(wx.EVT_BUTTON, self.OnCheck, id=2)
 	def rysuj(self):
+		global krok
 		if wybrano == 1:
 			if self.item == 0:
 				if self.krok == 1:
@@ -63,6 +63,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/two2.gif'))
 					self.mg.RemoveGesture('R')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 2:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/three1.gif'))
@@ -73,6 +74,7 @@ class MyMenu(wx.Frame):
 				elif self.krok == 3:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/three3.gif'))
 					self.krok = 1
+					self.punkt+=1
 					self.mg.RemoveGesture('R')
 			elif self.item == 3:
 				if self.krok == 1:
@@ -101,6 +103,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/four5.gif'))
 					self.mg.RemoveGesture('R')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 4:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/five1.gif'))
@@ -123,6 +126,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/five4.gif'))
 					self.mg.RemoveGesture('R')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 5:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/six1.gif'))
@@ -143,6 +147,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/six4.gif'))
 					self.mg.RemoveGesture('3')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 6:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/seven1.gif'))
@@ -153,6 +158,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/seven2.gif'))
 					self.mg.RemoveGesture('DR')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 7:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/eight1.gif'))
@@ -163,6 +169,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/eight2.gif'))
 					self.mg.RemoveGesture('3')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 8:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/nine1.gif'))
@@ -173,6 +180,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/nine2.gif'))
 					self.mg.RemoveGesture('RDRU')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 9:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/ten1.gif'))
@@ -183,6 +191,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/ten2.gif'))
 					self.mg.RemoveGesture('D')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 10:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred1.gif'))
@@ -213,6 +222,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/hundred6.gif'))
 					self.mg.RemoveGesture('R')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 11:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/thousand1.gif'))
@@ -228,21 +238,23 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/thousand3.gif'))
 					self.mg.RemoveGesture('D')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 12:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand1.gif'))
 					self.mg.RemoveGesture('R')
-					self.mg.AddGesture('R17', self.rysuj)
+					self.mg.AddGesture('RDU', self.rysuj)
 					self.krok = 2
 				elif self.krok == 2:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand2.gif'))
-					self.mg.RemoveGesture('R17')
+					self.mg.RemoveGesture('RDU')
 					self.mg.AddGesture('1', self.rysuj)
 					self.krok = 3
 				elif self.krok == 3:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/tenthousand3.gif'))
 					self.mg.RemoveGesture('1')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 13:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen1.gif'))
@@ -263,6 +275,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/yen4.gif'))
 					self.mg.RemoveGesture('R')
 					self.krok = 1
+					self.punkt+=1
 			elif self.item == 14:
 				if self.krok == 1:
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/time1.gif'))
@@ -307,6 +320,7 @@ class MyMenu(wx.Frame):
 					self.picture2.SetBitmap(wx.Bitmap('images/rys/time10.gif'))
 					self.mg.RemoveGesture('3')
 					self.krok = 1
+					self.punkt+=1
 	def Wiad(self, event):
 		dlg = wx.MessageDialog(self, 'Program stworzony przez Arkadiusza (Aresa) Błasiaka', 'Autor', wx.OK|wx.ICON_INFORMATION)
 		dlg.ShowModal()
@@ -494,6 +508,9 @@ class MyMenu(wx.Frame):
 		self.display1.Clear()
 		self.display2.Clear()
 		self.display3.Clear()
+		del self.krok
+		self.krok = 1
+		self.mg.RemoveAllGestures()
 		self.picture2.SetBitmap(wx.Bitmap('images/rys/biel.gif'))
 		random.shuffle(self.elementy)
 		dlg = wx.MessageDialog(self, ' Koniec testu, twoj wynik to :%i' % self.punkt, 'Podsumowanie', wx.OK|wx.ICON_INFORMATION)
@@ -536,7 +553,7 @@ class MyMenu(wx.Frame):
 			dlg.Destroy()
 			self.Close()
 	def OnBlad(self, event):
-		dlg = wx.MessageDialog(self, 'Jedna z odpowiedzi jest zla', 'Komunikat', wx.OK|wx.ICON_INFORMATION)
+		dlg = wx.MessageDialog(self, 'Jedna z odpowiedzi jest niepoprawna', 'Komunikat', wx.OK|wx.ICON_INFORMATION)
 		dlg.ShowModal()
 		dlg.Destroy()
 	def OnCheck(self,event):
@@ -579,7 +596,7 @@ class Wybor(wx.Dialog):
 class MyApp(wx.App):
     def OnInit(self):
     	if Wybor(None, -1, 'Wybor'):
-        	frame = MyMenu(None, -1, 'Japonski')
+        	frame = MyMenu(None, -1, 'Kanji This !')
         	frame.SetIcon(wx.Icon('images/flag.png', wx.BITMAP_TYPE_PNG))
         	frame.Show(True)
         return True
